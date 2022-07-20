@@ -14,8 +14,15 @@
         </div>
     </li>
     {% empty %}
-    <h4>You have no lists!</h4>
+    <h4>No lists. Add a list by clicking the button below.</h4>
     {% endfor %}
 </ul>
+
+<p>
+    <input
+        value="Add a new list"
+        type="button"
+        onclick="location.href='{% url "list-add" %}'" />
+</p>
 
 {% endblock %}

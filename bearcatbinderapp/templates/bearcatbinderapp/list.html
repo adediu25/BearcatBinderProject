@@ -5,7 +5,7 @@
     <div>
         <div>
             <h3>Edit list:</h3>
-            <h5>{{ todo_list.title | upper }}</h5>
+            <h5>{{ parent_list.title | upper }}</h5>
         </div>
         <ul>
             {% for todo in object_list %}
@@ -13,7 +13,7 @@
                 <div>
                     <div
                         role="button"
-                        onclick="location.href='#'">
+                        onclick="location.href='{% url "item-update" parent_list.id todo.id %}'">
                         {{ todo.title }}
                         (Due {{ todo.due_date | date:"l, F j" }})
                     </div>
@@ -27,7 +27,12 @@
             <input
                 value="Add a new item"
                 type="button"
-                onclick="location.href='#'" />
+                onclick="location.href='{% url "item-add" parent_list.id %}'" />
+            <input
+                value="Delete this list"
+                type="button"
+                onclick="location.href=
+                '{% url "list-delete" parent_list.id %}'" />
         </p>
     </div>
 </div>
